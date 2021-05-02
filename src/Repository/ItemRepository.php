@@ -49,6 +49,16 @@ class ItemRepository extends ServiceEntityRepository
         $this->manager->remove($item);
         $this->manager->flush();
     }
+
+    public function findByTag($text): array
+    {
+        $qb = $this->createQueryBuilder('c')
+        ->andWhere('c.tag LIKE :text')
+        ->setParameter('text', '%' . $text . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
+
     // /**
     //  * @return Item[] Returns an array of Item objects
     //  */

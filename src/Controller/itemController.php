@@ -62,6 +62,27 @@ class itemController
     }
 
     /**
+    * @Route("items/{texto}", name="buscar_items_tag")
+    */
+    public function buscar($texto)
+    {
+        $items = $this->itemRepository->findByTag($texto);
+        $data = [];
+
+        foreach ($items as $item) {
+            $data[] = [
+                'id' => $item->getId(),
+                'nombre' => $item->getNombre(),
+                'precio' => $item->getPrecio(),
+                'descripcion' => $item->getDescripcion(),
+                'tag' => $item->getTag()
+            ];
+        }
+
+        return new JsonResponse($data, Response::HTTP_OK);
+    }
+
+    /**
      * @Route("items", name="get_all_items", methods={"GET"})
      */
     public function getAll(): JsonResponse
