@@ -64,7 +64,7 @@ class itemController
     /**
     * @Route("items/{texto}", name="buscar_items_tag")
     */
-    public function buscar($texto)
+    public function buscar($texto): JsonResponse
     {
         $items = $this->itemRepository->findByTag($texto);
         $data = [];
@@ -80,6 +80,16 @@ class itemController
         }
 
         return new JsonResponse($data, Response::HTTP_OK);
+    }
+
+    /**
+    * @Route("tags", name="buscar_tags")
+    */
+    public function tags(): JsonResponse
+    {
+        $items = $this->itemRepository->findTags();
+
+        return new JsonResponse($items, Response::HTTP_OK);
     }
 
     /**

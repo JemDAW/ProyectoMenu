@@ -59,6 +59,14 @@ class ItemRepository extends ServiceEntityRepository
         return $qb->execute();
     }
 
+    public function findTags(): array
+    {
+        $qb = $this->createQueryBuilder('c')
+        ->select('c.tag')
+        ->groupBy('c.tag')
+        ->getQuery();
+        return $qb->execute();
+    }
     // /**
     //  * @return Item[] Returns an array of Item objects
     //  */
