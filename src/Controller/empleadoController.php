@@ -62,6 +62,27 @@ class empleadoController
     }
 
     /**
+    * @Route("login/{texto}", name="buscar_empleado_por_email")
+    */
+    public function buscarEmpleado($texto): JsonResponse
+    {
+        $empleados = $this->EmpleadoRepository->findByMail($texto);
+        $data = [];
+
+        foreach ($empleados as $empleado) {
+            $data[] = [
+                'id' => $empleado->getId(),
+                'nombre' => $empleado->getNombre(),
+                'email' => $empleado->getEmail(),
+                'password' => $empleado->getPassword(),
+                'tipo_usuario' => $empleado->getTipoUsuario()
+            ];
+        }
+
+        return new JsonResponse($data, Response::HTTP_OK);
+    }
+
+    /**
      * @Route("empleados", name="get_all_empleados", methods={"GET"})
      */
     public function getAll(): JsonResponse

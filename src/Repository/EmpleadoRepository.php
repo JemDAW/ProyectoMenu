@@ -48,6 +48,15 @@ class EmpleadoRepository extends ServiceEntityRepository
         $this->manager->remove($empleado);
         $this->manager->flush();
     }
+
+    public function findByMail($text): array
+    {
+        $qb = $this->createQueryBuilder('c')
+        ->andWhere('c.email LIKE :text')
+        ->setParameter('text', '%' . $text . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
     // /**
     //  * @return Empleado[] Returns an array of Empleado objects
     //  */
