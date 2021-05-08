@@ -53,7 +53,7 @@ class EmpleadoRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('c')
         ->andWhere('c.email LIKE :text')
-        ->setParameter('text', '%' . $text . '%')
+        ->setParameter('text', $text)
         ->getQuery();
         return $qb->execute();
     }
