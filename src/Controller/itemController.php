@@ -62,7 +62,7 @@ class itemController
     }
 
     /**
-    * @Route("items/{texto}", name="buscar_items_tag")
+    * @Route("items/{texto}", name="buscar_items_tag", methods={"GET"})
     */
     public function buscar($texto): JsonResponse
     {
@@ -83,7 +83,7 @@ class itemController
     }
 
     /**
-    * @Route("tags", name="buscar_tags")
+    * @Route("tags", name="buscar_tags", methods={"GET"})
     */
     public function tags(): JsonResponse
     {

@@ -122,7 +122,7 @@ class empleadoController
     }
 
     /**
-     * @Route("empleado/{id}", name="delete_empleado", methods={"DELETE"})
+     * @Route("delete/empleado/{id}", name="delete_empleado", methods={"DELETE"})
      */
     public function delete($id): JsonResponse
     {
