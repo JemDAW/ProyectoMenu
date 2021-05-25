@@ -132,7 +132,7 @@ class itemController
     }
 
     /**
-     * @Route("item/{id}", name="delete_item", methods={"DELETE"})
+     * @Route("delete/item/{id}", name="delete_item", methods={"DELETE"})
      */
     public function delete($id): JsonResponse
     {
