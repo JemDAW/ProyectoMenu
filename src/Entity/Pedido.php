@@ -73,7 +73,8 @@ class Pedido
 
     public function setFecha(\DateTimeInterface $fecha): self
     {
-        $this->fecha = $fecha;
+        $date = new \DateTime('@'.strtotime('now'));
+        $this->fecha = $date;
 
         return $this;
     }

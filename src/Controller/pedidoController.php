@@ -28,11 +28,13 @@ class pedidoController
     public function add(Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
+        $date = new \DateTime('@'.strtotime('now'));
+        
 
         $mesa = $data['mesa'];
         $precio_total = $data['precio_total'];
-        $fecha = $data['fecha'];
-        $hora = $data['hora'];
+        $fecha = $date;
+        $hora = $date;
 
         if (empty($mesa) || empty($precio_total) || empty($fecha)) {
             throw new NotFoundHttpException('Mesa, precio_total y contraseña obligatorio');
